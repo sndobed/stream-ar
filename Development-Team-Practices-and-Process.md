@@ -10,6 +10,7 @@ Here are some policies for adding new code to this repo:
 - Integration tests *must* be passing before merging into `staging`
 - All new *major* features should be accompanied by an integration test (or a few)
 - jQuery is banned from this repo.  There are a lot of existing libraries written as jQuery plugins that are tempting to use, but introducing jQuery into your Vue components and mutating the DOM outside of template rendering leads to difficult to diagnose bugs.
+- This project supports multiple languages. All strings that are going to be shown to users must be added to i18n dictionaries. See the "Internationalization" section.
 
 # Code Guidelines
 These are less rigid than policies, but should be adhered to unless there is a good reason not to:
@@ -38,6 +39,9 @@ JetBrains IDEs like webstorm or phpstorm are also a good choice if you are used 
 Only the Vue.js plugin is required.
 
 It is also possible to use Sublime and Atom (or any other editor) for our project, but it those instructions are beyond the scope of this guide.
+
+# Internationalization
+If you commit has the strings that supposed to be translated, you have to add these strings it into one of the JSON dictionaries in `i18n/en-US` folder. We use [vue-i18n](https://github.com/kazupon/vue-i18n) plugin for templating. You can run the util `node build-utils/search-untranslated.js` that find the all wrapped into the template function `$t()` stings that don't present in the dictionaries.
 
 # Final Comments
 If you don't understand one of these rules, or why it has been implemented, please ask.  If you think something is dumb, please say so.  Anything on this page can be changed if the team agrees on it.
