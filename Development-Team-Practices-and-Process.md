@@ -1,13 +1,14 @@
 # Coding Style
-We use [Prettier](https://prettier.io/) to handle formatting of Typescript.  Prettier is not only a style guide, but also an automatic code formatter.  This makes it extremely easy to adhere to the style guide and let the developer focus on the important stuff.  It is highly recommended that you install prettier into your editor.  In the future, we will be running a code formatting check on CI when you submit a PR.
+We use [TSLint](https://palantir.github.io/tslint/) to handle formatting of Typescript.  We use the "Prettier" base configuration for TSLint, which enforces our coding style and provides a automatic fixer for most violations.  This makes it extremely easy to adhere to the style guide and let the developer focus on the important stuff.  It is highly recommended that you install TSLint into your editor.  The CI build will fail if you submit a PR with TSLint violations.
 
 # Code Policies
 Here are some policies for adding new code to this repo:
 - All new code *must* be reviewed before going into the `staging` branch
 - All JS code should be written as TypeScript.  Vanilla JavaScript is never allowed.
-- All Vue code should be written as components using `.vue` files.  The script section should be a link to a separate file in the same directory with the same name with a `.vue.ts` extension.  This dramatically speeds up builds as it allows TS-Loader to cache compiled TS code separately.
+- All new Vue code should be written as single file TSX components.
+- Styling for Vue components should be handled with CSS modules `m.less`.
 - Vue components should be as minimal as possible. Anything that isn't specifically involved with rendering HTML or handling user input should be in a service class instead.  Keep UI components lightweight and re-usable.
-- Integration tests *must* be passing before merging into `staging`
+- ICI *must* be passing before merging into `staging`
 - All new *major* features should be accompanied by an integration test (or a few)
 - jQuery is banned from this repo.  There are a lot of existing libraries written as jQuery plugins that are tempting to use, but introducing jQuery into your Vue components and mutating the DOM outside of template rendering leads to difficult to diagnose bugs.
 - This project supports multiple languages. All strings that are going to be shown to users must be added to i18n dictionaries. See the "Internationalization" section.
@@ -31,7 +32,6 @@ Visual Studio Code is a great editor for this project.  It's a modern cross-plat
 
 If you choose to use VSCode, here are some extensions we highly recommend:
 - Vetur - This is an essential plugin that provides a much better experience when editing .vue files
-- Prettier - Automatic code formatting according to our style guide
 - TSLint - Linting for TypeScript
 - Trailing Spaces - Highlights trailing whitespace
 
